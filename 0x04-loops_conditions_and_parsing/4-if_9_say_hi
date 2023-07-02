@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 # A script that displays Best school 10x
-# 9th iteration displays Best school then hi
 
-x=0
 while (( x<10 ))
 do
 	x=$(( x=x+1 ))
