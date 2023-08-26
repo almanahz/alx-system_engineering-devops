@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 # Configure the SSH server to authenticates only through SSH keys
 include stdlib
 
