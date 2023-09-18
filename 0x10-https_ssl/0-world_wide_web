@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# A bash script to display info about my domain
+
+count="$#"
+if [ $count -ge 1 ]; then
+	domain="$1"
+	if [ $count -eq 1]; then
+		subdoms=("lb-01" "web-01" "web-02")
+	
+	else if [ $count -eq 2 ]; then
+		subdoms="$2"	
+	fi
+
+	address=$subdom"."$domain
+        dom_type=$(dig $address +noall +answer | awk -F '\t' '{print $5}')
+        dest=$(dig $address +noall +answer | awk -F '\t' '{print $6}')
+
+	for subdom in "${subdom[@]}"; do
+		echo "The subdomain $subdom is a $dom_type record and point to $dest"
+		done
+fi
