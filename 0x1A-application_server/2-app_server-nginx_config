@@ -13,19 +13,14 @@
 
 # Default server configuration
 #
-
 server {
-        listen 80;
-        server_name 52.91.178.108;
+        listen 80 default_server;
+        listen [::]:80 default_server;
 
-        location /airbnb-onepage/ {
-                proxy_pass http://localhost:5000;
-                proxy_set_header Host $host;
-                proxy_set_header X-Real-IP $remote_addr;
+        server_name _;
+
+        location /airbnb-onepage {
+                include proxy_params;
+                proxy_pass http://127.0.0.1:5000;
         }
 }
-
-        include /etc/nginx/conf.d/*.conf;
-        include /etc/nginx/sites-enabled/*;
-}
-
